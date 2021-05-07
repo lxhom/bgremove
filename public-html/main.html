@@ -1,0 +1,27 @@
+<script>
+  let upload = () => {
+    if (!window.FileReader) return; // Browser is not compatible
+    let reader = new FileReader();
+    reader.onload = async event => {
+      if (event.target.readyState !== 2) return;
+      if (event.target.error) {
+        alert('Error while reading file');
+        return;
+      }
+      let result = event.target.result.replace("data:image/png;base64,", "");
+      let userObject = JSON.parse(localStorage.jsonData)
+      let returnObject = {
+        image: result,
+        token: userObject.userToken,
+        tokenSecret: userObject.userTokenSecret
+      }
+      console.log(JSON.stringify(returnObject))
+      let res = await fetch("/api/upload", {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify(returnObject)})
+      alert(await res.text());
+    };
+    reader.readAsDataURL(document.querySelector("#file").files[0]);
+  };
+</script>
+Upload Profile Picture
+<input id="file" accept="image/png" type="file" oninput="document.querySelector('#upload').disabled = false" />
+<button id="upload" disabled onclick="upload()">Upload</button>

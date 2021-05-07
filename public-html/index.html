@@ -1,0 +1,62 @@
+<style>
+    input:checked + img {
+        background-color: #000;
+        border: 5px solid #000;
+    }
+    #content {
+        font-family: sans-serif;
+        text-align: center;
+    }
+    label {
+        text-decoration: underline;
+        cursor: pointer;
+        user-select: none;
+        background-color: #0006;
+        border-radius: 5px;
+        padding: 2px
+    }
+    img {
+        margin: 5px;
+        border: 5px solid #ccc;
+        transition: background-color 200ms ease-in-out, border 200ms ease-in-out;
+        width: 200px;
+        height: 200px;
+        border-radius: 200px;
+    }
+    details, summary {
+        outline: none;
+    }
+</style>
+
+<div id="content">
+    <h1>Semi-transparent profile pictures for Twitter</h1>
+    This tool allows you to make your profile picture semi-transparent pictures.<br>
+    Here's an example:<br>
+    <input type="checkbox" hidden id="toggle-dark-mode"><img src="example.png" alt="Example image"><br>
+    <label for="toggle-dark-mode">Toggle light/dark mode</label><br>
+    (This doesnt change the image, just the background.)<br>
+
+    You can <a href="/login">Log in with Twitter</a> to use a semi-transparent profile picture.<br>
+    <br>
+    FAQ:
+    <details>
+        <summary>How does this work?</summary>
+        This effect works by making the background of images semi-transparent so that
+        they affect the color without completely overlaying the background of your theme.
+    </details>
+    <details>
+        <summary>Why do I have to log in? Can't I just set the PFP myself?</summary>
+        You have to log in because when you crop a transparent picture on Twitter you
+        loose the transparency and you are forced to crop your profile picture on Twitter Web and
+        the Twitter Apps, but bots do not have that limitation so you can use a bot like this one
+        to set a transparent profile picture.
+    </details>
+    <details>
+        <summary>Why does the app need so many permissions?</summary>
+        To write profile settings (like the profile picture)
+        you need the Read+Write permissions for an app, and you cant select only a few of those
+        permissions, you can only specify Read, Read+Write or Read+Write+DM.
+        So dont worry if Twitter asks you for a million
+        permissions - I only use one (or two if you tweet about it) permission(s).
+    </details>
+</div>
